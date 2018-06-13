@@ -4,3 +4,4 @@ account-analytic
 web
 project https://github.com/modoolar/project project_key
 project https://github.com/modoolar/project project_git
+web https://github.com/modoolar/web web_diagram_position

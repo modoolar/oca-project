@@ -186,5 +186,8 @@ class Project(models.Model):
             project.key = self.generate_project_key(project.name)
             project.create_sequence()
 
-            for task in project.task_ids:
+            tasks = self.env['project.task'].search(
+                [('project_id', '=', project.id)], order='id')
+
+            for task in tasks:
                 task.key = project.get_next_task_key()

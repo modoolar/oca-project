@@ -9,6 +9,7 @@ class TestTask(TestCommon):
     def test_01_key(self):
         self.assertEqual(self.task11.key, "OCA-1")
         self.assertEqual(self.task12.key, "OCA-2")
+        self.assertEqual(self.task13.key, "OCA-10")
         self.assertEqual(self.task21.key, "ODOO-1")
         self.assertEqual(self.task30.key, False)
 
@@ -36,7 +37,7 @@ class TestTask(TestCommon):
 
     def test_06_name_search(self):
         oca_tasks = self.Task.name_search("OCA")
-        self.assertEqual(len(oca_tasks), 2)
+        self.assertEqual(len(oca_tasks), 3)
 
         non_oca_task_ids = [
             x[0] for x in self.Task.name_search("OCA", operator="not ilike")

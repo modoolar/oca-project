@@ -30,6 +30,12 @@ class TestCommon(TransactionCase):
             'project_id': self.project_1.id,
         })
 
+        self.task13 = self.Task.create({
+            'name': '3',
+            'key': 'OCA-10',
+            'project_id': self.project_1.id,
+        })
+
         self.task21 = self.Task.create({
             'name': '3',
             'project_id': self.project_2.id,

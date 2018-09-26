@@ -58,3 +58,7 @@ class TestProject(TestCommon):
     def test_08_generate_empty_project_key(self):
         empty_key = self.Project.generate_project_key(False)
         self.assertEqual(empty_key, '')
+
+    def test_09_task_key_sequence(self):
+        sequence = self.project_1.get_task_key_sequence()
+        self.assertEqual(sequence, 11)

@@ -130,6 +130,12 @@ class Project(models.Model):
     def get_next_task_key(self):
         return self.sudo().task_key_sequence_id.next_by_id()
 
+    def get_task_key_sequence(self):
+        return self.sudo().task_key_sequence_id.number_next_actual
+
+    def set_task_key_sequence(self, next):
+        self.sudo().task_key_sequence_id.number_next_actual = next
+
     def generate_project_key(self, text):
         if not text:
             return ''

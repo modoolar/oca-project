@@ -15,6 +15,7 @@ class Task(models.Model):
         size=20,
         required=False,
         index=True,
+        copy=False,
     )
 
     url = fields.Char(
@@ -46,7 +47,13 @@ class Task(models.Model):
 
         if project_id:
             project = self.env['project.project'].browse(project_id)
-            vals['key'] = project.get_next_task_key()
+            key = vals.get('key', False)
+            if key:
+                seq = int(key.split("-")[1])
+                if seq >= project.get_task_key_sequence():
+                    project.set_task_key_sequence(seq + 1)
+            else:
+                vals['key'] = project.get_next_task_key()
         return super(Task, self).create(vals)
 
     @api.multi
